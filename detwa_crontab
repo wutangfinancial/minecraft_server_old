@@ -1,0 +1,23 @@
+# m h  dom mon dow   command
+#
+# Commented out 2016/09/08 forwarding now
+#*/15 * * * * /home/sal/scripts/get_yahoo.sh
+#
+# older servers
+#0 0 * * * /etc/init.d/minecraft backup >/dev/null 2>&1
+#0 1 * * * find /home/sal/splunk/minecraft.backup.detwa -type f -mtime +5 -exec rm {} \;
+20 13 * * * find /home/sal/splunk/vultr_minecraft/backup -type f -mtime +15 -exec rm {} \;
+#05 12 * * * rsync -avz --delete-after -e /usr/bin/ssh ec2-user@54.89.15.239:~ /home/sal/splunk/Minecraft_amzn_bkup/ >/dev/null 2>&1
+#
+#
+# Vultr new minecraft server
+05 12 * * * rsync -avz --delete-after -e /usr/bin/ssh minecraft@minecraft.detwa.com:/home/minecraft/minecraft_backup_data/* /home/sal/splunk/vultr_minecraft/backup >/dev/null 2>&1
+10 12 * * * rsync -avz --delete-after -e /usr/bin/ssh minecraft@minecraft.detwa.com:/home/minecraft/world/* /home/sal/splunk/vultr_minecraft/world >/dev/null 2>&1
+15 12 * * * rsync -avz --delete-after -e /usr/bin/ssh minecraft@minecraft.detwa.com:/home/minecraft/logs/* /home/sal/splunk/vultr_minecraft/logs >/dev/null 2>&1
+30 13 * * * /usr/bin/genPOI.py --config=/home/sal/mca_overview.config.txt > /home/sal/minecraftoverviewer_mca_poi.log 2>&1
+50 13 * * * /usr/bin/overviewer.py --config=/home/sal/mca_overview.config.txt > /home/sal/minecraftoverviewer_mca.log 2>&1
+#
+#
+# other stuff / backups
+0 */2 * * * /home/sal/diskAlert.sh >/dev/null 2>&1
+45 19 * * * find /home/sal/splunk/chef_bkp -type f -mtime +4 -exec rm {} \; 2>/dev/null
