@@ -1,0 +1,70 @@
+worlds["amazon1"] = "/home/sal/splunk/vultr_minecraft/world"
+
+def playerIcons(poi):
+    if poi['id'] == 'Player':
+        poi['icon'] = "https://www.detwa.com/images/minecraft_guy.png"
+        return "Last known location for %s" % poi['EntityId']
+
+renders["amazon1day"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Daytime",
+    "rendermode": smooth_lighting,
+    "dimension": "overworld",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+renders["amazon1daysouth"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Daytime Facing South",
+    "rendermode": smooth_lighting,
+    "dimension": "overworld",
+    "northdirection" : "lower-right",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+renders["amazon1night"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Nighttime",
+    "rendermode": smooth_night,
+    "dimension": "overworld",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+renders["amazonlcave"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Caves",
+    "rendermode": cave,
+    "dimension": "overworld",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+renders["amazonlcavesouth"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Caves Facing South",
+    "rendermode": cave,
+    "dimension": "overworld",
+    "northdirection" : "lower-right",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+renders["amazon1nether"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Nether",
+    "rendermode": nether_smooth_lighting,
+    "dimension": "nether",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+renders["amazon1nethersouth"] = {
+    "world": "amazon1",
+    "title": "Amazon1 Nether Facing South",
+    "rendermode": nether_smooth_lighting,
+    "dimension": "nether",
+    "northdirection" : "lower-right",
+    "markers":[dict(name="All players", filterFunction=playerIcons)]
+}
+
+outputdir = "/home/sal/splunk/Minecraft_www/mca"
+# uses ~/.minecraft now
+#texturepath = "/home/sal/Ragecraft_Faithful_64x64.zip"
+
