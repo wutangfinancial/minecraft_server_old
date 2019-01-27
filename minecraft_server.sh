@@ -1,7 +1,7 @@
 #!/bin/bash
 
 msmemmb=512
-mxmemmb=1792
+mxmemmb=3096
 
 for (( ; ; ))
 do
