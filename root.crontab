@@ -1,0 +1,4 @@
+# m h  dom mon dow   command
+0 12 * * * /home/minecraft/minecraft.backup backup >/dev/null 2>&1
+20 12 * * * find /home/minecraft/minecraft_backup_data -type f -mtime +15 -exec rm {} \;
+
